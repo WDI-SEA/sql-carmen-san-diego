@@ -56,4 +56,4 @@ Brasília
 SELECT * FROM city WHERE population = 91084;
 
 -- She's in ____________________________!
-Santa Monica, CA
+Santa Monica, CA, USA
