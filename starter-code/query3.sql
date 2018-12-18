@@ -1,0 +1,1 @@
+SELECT countrycode, name FROM city WHERE countrycode='PCN';

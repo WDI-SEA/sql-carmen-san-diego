@@ -1,0 +1,1 @@
+SELECT countrycode, language FROM countrylanguage WHERE language='Pitcairnese';

@@ -1,0 +1,1 @@
+SELECT name, population FROM city ORDER BY population ASC LIMIT 2;
