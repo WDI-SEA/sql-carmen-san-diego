@@ -2,17 +2,31 @@
 -- traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 -- so find the least populated country in Southern Europe, and we'll start looking for her there.
 
+Holy See (Vatican See) is the least populated country in Southern Europe.
 
+SELECT name, population, region FROM country WHERE region = 'Southern Europe' ORDER BY population;
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 -- this country's officially recognized language. Check our databases and find out what language is
 -- spoken in this country, so we can call in a translator to work with you.
+
+Italian is the language spoken here.
+
+SELECT * FROM countrylanguage WHERE name = 'Holy See (Vatican City State)';
 
 
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
 -- to a different country, a country where people speak only the language she was learning. Find out which
 --  nearby country speaks nothing but that language.
+
+San Marino - 100% speak Italian
+
+SELECT * FROM countrylanguage WHERE language  = 'Italian' AND isofficial = 'true';
+
+-- the below is supporting query
+SELECT country.code, country.name FROM country, countrylanguage WHERE country.language = 'Italian' AND country.code
+ = countrylanguage.countrycode
 
 
 
@@ -21,17 +35,26 @@
  -- would be too obvious. We're following our gut on this one; find out what other city in that country she might
  --  be flying to.
 
+Seravalle/Dogano
+
+SELECT * FROM city WHERE countrycode = 'SMR';
 
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different
 -- parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were
 -- headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
+Brazil "Serra"
 
+SELECT * FROM city WHERE name Like "Serra";
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
  -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
  -- follow right behind you!
+
+ Brasilia
+
+ SELECT city.id, city.name, city.countrycode FROM city, country WHERE country.capital = city.id AND city.id = 211;
 
 
 
@@ -48,9 +71,10 @@
 -- So I'm off to add one to the population I find
 -- In a city of ninety-one thousand and now, eighty five.
 
+91,084
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
 
 
 
--- She's in ____________________________!
+-- She's in ____________SANTA MONICA!________________!
