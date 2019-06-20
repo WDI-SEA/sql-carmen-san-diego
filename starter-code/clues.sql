@@ -5,7 +5,7 @@
 SELECT name, population, region FROM country WHERE region = 'Southern Europe' ORDER BY population ASC;
             name              | population |     region      
 -------------------------------+------------+-----------------
- Holy See (Vatican City State) |       1000 | Southern Europe
+ Holy See (Vatican City State) |       1000 | Southern Europe -- Least populated country in Southern Europe!
  Gibraltar                     |      25000 | Southern Europe
  San Marino                    |      27000 | Southern Europe
  Andorra                       |      78000 | Southern Europe
@@ -26,7 +26,9 @@ SELECT name, population, region FROM country WHERE region = 'Southern Europe' OR
 -- this country's officially recognized language. Check our databases and find out what language is
 -- spoken in this country, so we can call in a translator to work with you.
 
-SELECT * FROM country language WHERE population < 1500;
+SELECT * FROM country language WHERE population < 1001;
+VAT  | Holy See (Vatican City State)                | Europe     | Southern Europe           |         0.4 |      1929 |       1000 |                | 9.00 |        | Santa Sede/Citt� del Vaticano                | Independent Church State            | Johannes Paavali II |    3538 | VA
+
 -- country code is VAT
 SELECT language FROM countrylanguage WHERE countrycode = 'VAT';
  language 
