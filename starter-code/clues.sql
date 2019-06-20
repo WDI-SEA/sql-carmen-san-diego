@@ -64,6 +64,20 @@ world=# SELECT name FROM city WHERE countrycode = 'SMR';
 -- parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were
 -- headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
+--Try finding similar cities:
+SELECT * FROM city WHERE name LIKE '%serra';
+ id | name | countrycode | district | population 
+----+------+-------------+----------+------------
+(0 rows)
+--
+SELECT * FROM city WHERE name LIKE '%valle';
+  id  |    name    | countrycode |     district      | population 
+------+------------+-------------+-------------------+------------
+  579 | Ovalle     | CHL         | Coquimbo          |      94854
+ 3170 | Serravalle | SMR         | Serravalle/Dogano |       4802
+(2 rows)
+
+
 SELECT name, code, region, capital FROM country WHERE continent = 'South America';
        name       | code |    region     | capital 
 ------------------+------+---------------+---------
