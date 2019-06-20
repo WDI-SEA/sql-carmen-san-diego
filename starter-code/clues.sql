@@ -65,15 +65,10 @@ world=# SELECT name FROM city WHERE countrycode = 'SMR';
 -- headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
 --Try finding similar cities:
-SELECT * FROM city WHERE name LIKE '%serra';
- id | name | countrycode | district | population 
-----+------+-------------+----------+------------
-(0 rows)
---
-SELECT * FROM city WHERE name LIKE '%valle';
+world=# SELECT * FROM city WHERE name LIKE 'Serra%';
   id  |    name    | countrycode |     district      | population 
 ------+------------+-------------+-------------------+------------
-  579 | Ovalle     | CHL         | Coquimbo          |      94854
+  265 | Serra      | BRA         | Esp�rito Santo    |     302666
  3170 | Serravalle | SMR         | Serravalle/Dogano |       4802
 (2 rows)
 
@@ -83,8 +78,8 @@ SELECT name, code, region, capital FROM country WHERE continent = 'South America
 ------------------+------+---------------+---------
  Argentina        | ARG  | South America |      69
  Bolivia          | BOL  | South America |     194
- Brazil           | BRA  | South America |     211
- Chile            | CHL  | South America |     554 -- That's the country!
+ Brazil           | BRA  | South America |     211 -- That's the country!
+ Chile            | CHL  | South America |     554 
  Ecuador          | ECU  | South America |     594
  Falkland Islands | FLK  | South America |     763
  Guyana           | GUY  | South America |     928
@@ -97,52 +92,16 @@ SELECT name, code, region, capital FROM country WHERE continent = 'South America
  Venezuela        | VEN  | South America |    3539
 (14 rows)
 
-SELECT name FROM city WHERE countrycode = 'CHL';
-        name         
----------------------
- Santiago de Chile
- Puente Alto
- Vi�a del Mar
- Valpara�so
- Talcahuano
- Antofagasta
- San Bernardo
- Temuco
- Concepci�n
- Rancagua
- Arica
- Talca
- Chill�n
- Iquique
- Los Angeles
- Puerto Montt
- Coquimbo
- Osorno
- La Serena
- Calama
- Valdivia
- Punta Arenas
- Copiap�
- Quilpu�
- Curic�
- Ovalle -- That's the city!
- Coronel
- San Pedro de la Paz
- Melipilla
-(29 rows)
-
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
  -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
  -- follow right behind you!
 
- SELECT name FROM city WHERE id = 554;
-       name        
--------------------
- Santiago de Chile -- That's the city!
+SELECT name FROM city WHERE id = 211;
+   name   
+----------
+ Bras�lia -- That's the city!
 (1 row)
-
-
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to
  -- the boarding gates. We have one chance to catch her, we just have to know where she's heading and beat her to the
