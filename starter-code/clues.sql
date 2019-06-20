@@ -2,7 +2,8 @@
 -- traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 -- so find the least populated country in Southern Europe, and we'll start looking for her there.
 
-
+SELECT name, population, region FROM country WHERE region = 'Southern Europe' ORDER BY population ASC;
+--Holy See, (Vatican City State0
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 -- this country's officially recognized language. Check our databases and find out what language is
@@ -10,9 +11,18 @@
 
 
 
+SELECT * FROM country WHERE name = 'Holy See (Vatican City State)';
+SELECT * FROM countrylanguage WHERE countrycode = 'VAT';
+--Language is Italian
+
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
 -- to a different country, a country where people speak only the language she was learning. Find out which
 --  nearby country speaks nothing but that language.
+
+SELECT * FROM countrylanguage WHERE language = 'Italian' AND isofficial = true;
+SELECT * FROM city  WHERE 'countrycode' = 'SMR';
+--Serravalle
+--SMR speaks 100% Italian
 
 
 
@@ -21,19 +31,26 @@
  -- would be too obvious. We're following our gut on this one; find out what other city in that country she might
  --  be flying to.
 
+SELECT * FROM city  WHERE countrycode = 'SMR';
+--Serravalle/Dogano (not San Marino)
 
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different
 -- parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were
 -- headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
+SELECT * FROM city WHERE name Like 'Ser%';
+SELECT * FROM city WHERE name Like 'Serra%';
 
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
  -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
  -- follow right behind you!
 
-
+SELECT name, region, capital FROM country WHERE code = 'BRA';
+SELECT name FROM country WHERE capital = '211';
+SELECT name FROM city WHERE id = 211;
+--Brasilia
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to
  -- the boarding gates. We have one chance to catch her, we just have to know where she's heading and beat her to the
@@ -49,8 +66,11 @@
 -- In a city of ninety-one thousand and now, eighty five.
 
 
+91,084
+SELECT name FROM city WHERE population = 91084;
+
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
 
 
 
--- She's in ____________________________!
+-- She's in Santa Monica!
