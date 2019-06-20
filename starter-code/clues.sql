@@ -2,18 +2,48 @@
 -- traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 -- so find the least populated country in Southern Europe, and we'll start looking for her there.
 
-
+SELECT name, population, region FROM country WHERE region = 'Southern Europe' ORDER BY population ASC;
+            name              | population |     region      
+-------------------------------+------------+-----------------
+ Holy See (Vatican City State) |       1000 | Southern Europe
+ Gibraltar                     |      25000 | Southern Europe
+ San Marino                    |      27000 | Southern Europe
+ Andorra                       |      78000 | Southern Europe
+ Malta                         |     380200 | Southern Europe
+ Slovenia                      |    1987800 | Southern Europe
+ Macedonia                     |    2024000 | Southern Europe
+ Albania                       |    3401200 | Southern Europe
+ Bosnia and Herzegovina        |    3972000 | Southern Europe
+ Croatia                       |    4473000 | Southern Europe
+ Portugal                      |    9997600 | Southern Europe
+ Greece                        |   10545700 | Southern Europe
+ Yugoslavia                    |   10640000 | Southern Europe
+ Spain                         |   39441700 | Southern Europe
+ Italy                         |   57680000 | Southern Europe
+(15 rows)
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 -- this country's officially recognized language. Check our databases and find out what language is
 -- spoken in this country, so we can call in a translator to work with you.
 
+SELECT * FROM country language WHERE population < 1500;
+-- country code is VAT
+SELECT language FROM countrylanguage WHERE countrycode = 'VAT';
+ language 
+----------
+ Italian
+(1 row)
 
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
 -- to a different country, a country where people speak only the language she was learning. Find out which
 --  nearby country speaks nothing but that language.
 
+SELECT * FROM countrylanguage WHERE language = 'Italian' AND isofficial = 'true' AND percentage = 100;
+ countrycode | language | isofficial | percentage 
+-------------+----------+------------+------------
+ SMR         | Italian  | t          |        100
+(1 row)
 
 
 -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
@@ -21,17 +51,80 @@
  -- would be too obvious. We're following our gut on this one; find out what other city in that country she might
  --  be flying to.
 
-
+world=# SELECT name FROM city WHERE countrycode = 'SMR';
+    name    
+------------
+ Serravalle -- That's the city!
+ San Marino
+ (2 rows)
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different
 -- parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were
 -- headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
+SELECT name, code, region, capital FROM country WHERE continent = 'South America';
+       name       | code |    region     | capital 
+------------------+------+---------------+---------
+ Argentina        | ARG  | South America |      69
+ Bolivia          | BOL  | South America |     194
+ Brazil           | BRA  | South America |     211
+ Chile            | CHL  | South America |     554 -- That's the country!
+ Ecuador          | ECU  | South America |     594
+ Falkland Islands | FLK  | South America |     763
+ Guyana           | GUY  | South America |     928
+ Colombia         | COL  | South America |    2257
+ Paraguay         | PRY  | South America |    2885
+ Peru             | PER  | South America |    2890
+ French Guiana    | GUF  | South America |    3014
+ Suriname         | SUR  | South America |    3243
+ Uruguay          | URY  | South America |    3492
+ Venezuela        | VEN  | South America |    3539
+(14 rows)
+
+SELECT name FROM city WHERE countrycode = 'CHL';
+        name         
+---------------------
+ Santiago de Chile
+ Puente Alto
+ Vi�a del Mar
+ Valpara�so
+ Talcahuano
+ Antofagasta
+ San Bernardo
+ Temuco
+ Concepci�n
+ Rancagua
+ Arica
+ Talca
+ Chill�n
+ Iquique
+ Los Angeles
+ Puerto Montt
+ Coquimbo
+ Osorno
+ La Serena
+ Calama
+ Valdivia
+ Punta Arenas
+ Copiap�
+ Quilpu�
+ Curic�
+ Ovalle -- That's the city!
+ Coronel
+ San Pedro de la Paz
+ Melipilla
+(29 rows)
 
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
  -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
  -- follow right behind you!
+
+ SELECT name FROM city WHERE id = 554;
+       name        
+-------------------
+ Santiago de Chile -- That's the city!
+(1 row)
 
 
 
@@ -51,6 +144,10 @@
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
 
+SELECT name FROM city WHERE population = 91084;
+     name     
+--------------
+ Santa Monica
+(1 row)
 
-
--- She's in ____________________________!
+-- She's in ___Santa Monica_________________________!
