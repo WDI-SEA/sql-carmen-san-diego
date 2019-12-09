@@ -1,0 +1,1 @@
+SELECT * FROM city WHERE population>91000 AND population<92000 ORDER BY population ASC;
