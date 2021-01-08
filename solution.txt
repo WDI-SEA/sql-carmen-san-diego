@@ -1,0 +1,23 @@
+Clue #1:
+
+ SELECT countries, population FROM world
+  WHERE population = (
+    SELECT MIN(population) FROM world
+  ); 
+
+OR
+
+SELECT min(population) FROM countries;
+
+
+Clue #2:
+
+SELECT * FROM countrylanguages WHERE countrycode LIKE '%';
+
+Clue #3:
+
+SELECT * FROM countrylanguages WHERE language = '';
+
+ Clue #4:
+
+  <!--  -->
