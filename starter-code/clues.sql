@@ -2,12 +2,16 @@
 -- traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 -- so find the least populated country in Southern Europe, and we'll start looking for her there.
 
+SELECT * FROM countries WHERE region = 'Southern Europe' ORDER BY population ASC;
+
+Carmen was spotted in VAT 
 
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 -- this country's officially recognized language. Check our databases and find out what language is
 -- spoken in this country, so we can call in a translator to work with you.
 
+SELECT * FROM countrylanguages WHERE
 
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
@@ -54,3 +58,16 @@
 
 
 -- She's in ____________________________!
+
+
+-- \l (lowercase L) to view what databases are available
+-- CREATE DATABASE name
+-- \connect or \c to switch to a database
+-- \d to see what tables are available within your database.
+-- CREATE TABLE customers (
+--   id SERIAL PRIMARY KEY,
+--   name TEXT,
+--   age INTEGER,
+--   country TEXT,
+--   salary INTEGER
+-- );
