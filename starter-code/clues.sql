@@ -2,7 +2,11 @@
 -- traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 -- so find the least populated country in Southern Europe, and we'll start looking for her there.
 
-
+world=# SELECT name FROM countries WHERE region='Southern Europe' ORDER BY population ASC LIMIT 1 ;
+              name
+---------------------------------
+ Holy See (Vatican Cities State)
+(1 row)
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 -- this country's officially recognized language. Check our databases and find out what language is
