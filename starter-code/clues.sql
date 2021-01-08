@@ -12,13 +12,26 @@ world=# SELECT name FROM countries WHERE region='Southern Europe' ORDER BY popul
 -- this country's officially recognized language. Check our databases and find out what language is
 -- spoken in this country, so we can call in a translator to work with you.
 
-
+world=# SELECT  countrylanguages.language                
+world-# FROM countries INNER JOIN countrylanguages
+world-# ON countries.code=countrylanguages.countrycode WHERE countries.name ='Holy See (Vatican Cities State)' ;
+ language
+----------
+ Italian
+(1 row)
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
 -- to a different country, a country where people speak only the language she was learning. Find out which
 --  nearby country speaks nothing but that language.
 
-
+world=# SELECT countries.name, countrylanguages.language , countries.region
+world-# FROM countries INNER JOIN countrylanguages
+world-# ON countries.code=countrylanguages.countrycode WHERE countrylanguages.language='Italian'AND countries.region='Southern Europe' ; 
+              name               | language |     region
+---------------------------------+----------+-----------------
+ Italy                           | Italian  | Southern Europe
+ San Marino                      | Italian  | Southern Europe
+ Holy See (Vatican Cities State) | Italian  | Southern Europe
 
 -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
  -- There are only two cities she could be flying to in the country. One is named the same as the country – that
