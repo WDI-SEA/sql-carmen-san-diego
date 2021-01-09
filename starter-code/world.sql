@@ -1,3 +1,4 @@
+-- Carmen Sandiego is in Santa Monica - Sean Feiner RED DEV
 CREATE DATABASE world;
 \connect world
 
