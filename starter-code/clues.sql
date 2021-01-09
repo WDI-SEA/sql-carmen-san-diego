@@ -53,4 +53,205 @@
 
 
 
--- She's in ____________________________!
+-- She's in __Santa Monica!
+
+1.SELECT * FROM countries WHERE region = 'Southern Europe' ORDER BY population ASC;
+
+ code |              name               | continent |     region      | surfacearea | indepyear | population | lifeexpectancy |    gnp     |   gnpold   |           localname           |        governmentform         |     headofstate      | capital | code2 
+
+------+---------------------------------+-----------+-----------------+-------------+-----------+------------+----------------+------------+------------+-------------------------------+-------------------------------+----------------------+---------+-------
+
+ VAT  | Holy See (Vatican Cities State) | Europe    | Southern Europe |         0.4 |      1929 |       1000 |                |       9.00 |            | Santa Sede/Citt del Vaticano | Independent Church State      | Johannes Paavali II  |    3538 | VA
+
+ GIB  | Gibraltar                       | Europe    | Southern Europe |           6 |           |      25000 |             79 |     258.00 |            | Gibraltar                     | Dependent Territory of the UK | Elisabeth II         |     915 | GI
+
+ SMR  | San Marino                      | Europe    | Southern Europe |          61 |       885 |      27000 |           81.1 |     510.00 |            | San Marino                    | Republic                      |                      |    3171 | SM
+
+ AND  | Andorra                         | Europe    | Southern Europe |         468 |      1278 |      78000 |           83.5 |    1630.00 |            | Andorra                       | Parliamentary Coprincipality  |                      |      55 | AD
+
+ MLT  | Malta                           | Europe    | Southern Europe |         316 |      1964 |     380200 |           77.9 |    3512.00 |    3338.00 | Malta                         | Republic                      | Guido de Marco       |    2484 | MT
+
+ SVN  | Slovenia                        | Europe    | Southern Europe |       20256 |      1991 |    1987800 |           74.9 |   19756.00 |   18202.00 | Slovenija                     | Republic      
+
+
+
+2.SELECT name, population FROM countries WHERE region = 'Southern Europe' ORDER BY population ASC;
+
+              name               | population 
+
+---------------------------------+------------
+
+ Holy See (Vatican Cities State) |       1000
+
+ Gibraltar                       |      25000
+
+ San Marino                      |      27000
+
+ Andorra                         |      78000
+
+ Malta                           |     380200
+
+ Slovenia                        |    1987800
+
+ Macedonia                       |    2024000
+
+ Albania                         |    3401200
+
+ Bosnia and Herzegovina          |    3972000
+
+ Croatia                         |    4473000
+
+ Portugal                        |    9997600
+
+ Greece                          |   10545700
+
+ Yugoslavia                      |   10640000
+
+ Spain                           |   39441700
+
+ Italy                           |   57680000
+
+(15 rows)
+
+world=# SELECT code FROM countries WHERE region = 'Southern Europe';
+
+ code 
+
+------
+
+ ALB
+
+ AND
+
+ BIH
+
+ ESP
+
+ GIB
+
+ ITA
+
+ YUG
+
+ GRC
+
+ HRV
+
+ MKD
+
+ MLT
+
+ PRT
+
+ SMR
+
+ SVN
+
+ VAT
+
+(15 rows)
+
+
+
+4.world=# SELECT language FROM countrylanguages WHERE countrycode = 'VAT';
+
+ language 
+
+----------
+
+ Italian
+
+
+
+5. world=# SELECT * FROM countrylanguages WHERE language = 'Italian';
+
+ countrycode | language | isofficial | percentage 
+
+-------------+----------+------------+------------
+
+ ITA         | Italian  | t          |       94.1
+
+ SMR         | Italian  | t          |        100
+
+ VAT         | Italian  | t          |          0
+
+ ARG         | Italian  | f          |        1.7
+
+ AUS         | Italian  | f          |        2.2
+
+ LIE         | Italian  | f          |        2.5
+
+ BEL         | Italian  | f          |        2.4
+
+ BRA         | Italian  | f          |        0.4
+
+ LUX         | Italian  | f          |        4.6
+
+ MCO         | Italian  | f          |       16.1
+
+ CHE         | Italian  | t          |        7.7
+
+ CAN         | Italian  | f          |        1.7
+
+ FRA         | Italian  | f          |        0.4
+
+ DEU         | Italian  | f          |        0.7
+
+ USA         | Italian  | f          |        0.6
+
+(15 rows)
+
+
+6. world=# SELECT * FROM countries WHERE code = 'SMR';
+ code |    name    | continent |     region      | surfacearea | indepyear | population | lifeexpectancy |  gnp   | gnpold | localname  | governmentform | headofstate | capital | code2 
+
+------+------------+-----------+-----------------+-------------+-----------+------------+----------------+--------+--------+------------+----------------+-------------+---------+-------
+
+ SMR  | San Marino | Europe    | Southern Europe |          61 |       885 |      27000 |           81.1 | 510.00 |        | San Marino | Republic       |             |    3171 | SM
+
+
+7. world=# SELECT * FROM cities WHERE countrycode = 'SMR';
+  id  |    name    | countrycode |     district      | population 
+
+------+------------+-------------+-------------------+------------
+
+ 3170 | Serravalle | SMR         | Serravalle/Dogano |       4802
+
+ 3171 | San Marino | SMR         | San Marino        |       2294
+
+7. world=# SELECT countrycode FROM cities WHERE name LIKE 'Serr%';
+ countrycode 
+
+-------------
+
+ BRA
+
+ SMR
+
+8. world=# SELECT name FROM countries WHERE code = 'BRA';
+  name  
+
+--------
+
+ Brazil
+
+9. world=# SELECT * FROM cities WHERE id = 211;
+
+ id  |   name   | countrycode |     district     | population 
+
+-----+----------+-------------+------------------+------------
+
+ 211 | Braslia | BRA         | Distrito Federal |    1969868
+
+
+
+10. world=# SELECT * FROM cities WHERE population = 91084;
+
+  id  |     name     | countrycode |  district  | population 
+
+------+--------------+-------------+------------+------------
+
+ 4060 | Santa Monica | USA         | California |      91084
+
+
+
