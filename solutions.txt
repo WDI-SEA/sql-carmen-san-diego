@@ -1,0 +1,20 @@
+1. SELECT name FROM countries WHERE region='Southern Europe' ORDER BY population ASC LIMIT 1;
+
+2. SELECT * FROM countrylanguages WHERE countrycode='vat'
+
+3. SELECT * FROM countrylanguages WHERE = 'Italian';
+
+4. SELECT * FROM countries WHERE code='SMR';
+
+5. SELECT * FROM cities WHERE countrycode= 'SMR';
+
+6. SELECT * FROM cities WHERE name LIKE 'Serr%';
+
+7. SELECT * FROM countries WHERE code ='BRA';
+
+8. SELECT * FROM cities WHERE id='211';
+
+9. SELECT * FROM cities WHERE population = '91084';
+
+Carmen San Diego is in Santa Monica 
+
