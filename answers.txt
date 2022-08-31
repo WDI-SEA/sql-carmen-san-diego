@@ -1,0 +1,8 @@
+1 SELECT * FROM countries WHERE region = 'Southern Europe';
+2 SELECT * FROM countrylanguages WHERE countrycode = 'VAT'
+3 SELECT * FROM countrylanguages WHERE percentage = 100;
+4 SELECT * FROM cities WHERE code = 'SMR';
+5 SELECT * FROM cities WHERE name = 'Serra'
+6 SELECT * FROM countries WHERE name = 'Brazil';
+    SELECT * FROM cities WHERE id = 211;
+7 SELECT * FROM cities WHERE population = 91084;
