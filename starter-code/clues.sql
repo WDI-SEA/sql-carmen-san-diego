@@ -86,8 +86,7 @@ AND id = 211
 -- So I'm off to add one to the population I find
 -- In a city of ninety-one thousand and now, eighty five.
 
-SELECT *
-FROM cities
+SELECT * FROM cities
 WHERE population = 91084
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
@@ -95,3 +94,4 @@ WHERE population = 91084
 
 
 -- She's in Santa Monica USA! :D
+
