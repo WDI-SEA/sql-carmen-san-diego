@@ -2,6 +2,7 @@
 -- traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 -- so find the least populated country in Southern Europe, and we'll start looking for her there.
 
+SELECT * FROM country WHERE region='Southern Europe' ORDER BY population ASC;
 
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
@@ -9,6 +10,7 @@
 -- spoken in this country, so we can call in a translator to work with you.
 
 
+SELECT * FROM  countrylanguage WHERE  countrycode='VAT';
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
 -- to a different country, a country where people speak only the language she was learning. Find out which
@@ -20,6 +22,7 @@
  -- There are only two cities she could be flying to in the country. One is named the same as the country – that
  -- would be too obvious. We're following our gut on this one; find out what other city in that country she might
  --  be flying to.
+ 
 
 
 
