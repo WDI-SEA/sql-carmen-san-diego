@@ -107,4 +107,4 @@ WHERE population = 91084;
 
 
 -- She's in ____________________________!
--- She's in Santa Monica , id is 4606 
+-- She's in Santa Monica , id is 4606 ,countrycode is USA, district is  California
