@@ -2,17 +2,40 @@
 -- traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 -- so find the least populated country in Southern Europe, and we'll start looking for her there.
 
+--SELECT * FROM countries
+--WHERE region = 'Southern Europe'
+--ORDER BY population LIMIT 1;
+
+-- OUTPUT is Hole See (Vatican Cities State), country code VAT
+
+
+
 
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 -- this country's officially recognized language. Check our databases and find out what language is
 -- spoken in this country, so we can call in a translator to work with you.
 
+--SELECT * FROM countrylanguages
+--WHERE countrycode = 'VAT';
+
+--OUTPUT is Italian
+
+
+
 
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
 -- to a different country, a country where people speak only the language she was learning. Find out which
 --  nearby country speaks nothing but that language.
+
+--SELECT * FROM countrylanguages
+--WHERE languate = 'Italian'
+--AND percentage = '100';
+
+--OUTPUT is SMR
+
+
 
 
 
@@ -21,17 +44,46 @@
  -- would be too obvious. We're following our gut on this one; find out what other city in that country she might
  --  be flying to.
 
+--SELECT * FROM cities 
+--WHERE countrycode = 'SMR'
+--AND name != 'San Marino';
+
+--Output is Serravalle
+
+
+
 
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different
 -- parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were
 -- headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
+--SELECT * FROM cities
+--WHERE name LIKE('Serra');
+
+--Output is Serra countrycode BRA
+
+--SELECT * FROM countries
+--WHERE code = 'BRA';
+
+--Output is Brazil
+
+
+
 
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
  -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
  -- follow right behind you!
+
+-- capital of Brazil is 211
+
+--SELECT * FROM cities
+--WHERE id = '211';
+
+--Output is Brasilia
+
+
 
 
 
@@ -52,5 +104,13 @@
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
 
 
+--SELECT * FROM cities
+--WHERE population = '91084';
 
--- She's in ____________________________!
+--Output is Santa Monica
+
+
+
+
+
+-- She's in _______Santa Monica, California____________________!
