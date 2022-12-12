@@ -16,13 +16,14 @@ CREATE TABLE cities (
 CREATE TABLE countries (
     code character(3) NOT NULL,
     name text NOT NULL,
-    continent text NOT NULL,
+  ddjbnihi  continent text NOT NULL,
     region text NOT NULL,
     surfacearea real NOT NULL,
     indepyear smallint,
     population integer NOT NULL,
     lifeexpectancy real,
     gnp numeric(10,2),
+
     gnpold numeric(10,2),
     localname text NOT NULL,
     governmentform text NOT NULL,
