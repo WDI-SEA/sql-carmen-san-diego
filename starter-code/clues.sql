@@ -14,14 +14,14 @@ SELECT * FROM countrylanguages WHERE countrycode = 'VAT';
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
 -- to a different country, a country where people speak only the language she was learning. Find out which
 --  nearby country speaks nothing but that language.
-SELECT * FROM countrylanguages WHERE language = 'Italian';
+SELECT * FROM countrylanguages WHERE language = 'Italian' ORDER BY percentage DESC LIMIT 1;
 -- SMR
 
 -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
  -- There are only two cities she could be flying to in the country. One is named the same as the country – that
  -- would be too obvious. We're following our gut on this one; find out what other city in that country she might
  --  be flying to.
-SELECT * FROM cities WHERE countrycode = 'SMR';
+SELECT * FROM cities WHERE countrycode = 'SMR' AND NOT name = 'San Marino';
 -- Serravalle
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different
@@ -31,13 +31,18 @@ SELECT * FROM cities WHERE name LIKE 'Ser%';
 -- Serra
 SELECT * FROM countries WHERE code = 'BRA';
 -- Brazil
+SELECT * FROM countries WHERE code = (
+    SELECT countrycode FROM cities WHERE NOT name = 'Serravalle' AND name LIKE 'Serr%'
+);
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
  -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
  -- follow right behind you!
 SELECT id, name FROM cities WHERE id = 211;
 -- Brasilia
-
+SELECT * FROM cities WHERE id = (
+    # SELECT capital FROM countries WHERE code = 'BRA'
+);
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to
  -- the boarding gates. We have one chance to catch her, we just have to know where she's heading and beat her to the
@@ -55,6 +60,7 @@ SELECT id, name FROM cities WHERE id = 211;
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
 SELECT name, countrycode, population FROM cities WHERE population = 91084;
+SELECT * FROM cities WHERE population = 91085 - 1;
 
 
 -- She's in _____Santa Monica, California, USA_______________________!
